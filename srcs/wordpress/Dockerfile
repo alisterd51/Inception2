@@ -22,6 +22,9 @@ RUN			apk add --no-cache php php-fpm php-opcache php-mysqli
 # Copy confile files
 COPY		entrypoint-wordpress.sh /entrypoint-wordpress.sh
 RUN			chmod +x /entrypoint-wordpress.sh
+COPY		wordpress.conf /etc/php7/php-fpm.d/wordpress.conf
+
+WORKDIR		/var/www/html
 
 # Start server
 ENTRYPOINT	["/entrypoint-wordpress.sh"]
