@@ -1,0 +1,41 @@
+version: "3"
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./wordpress/conf/wordpress:/var/www/html
+    env_file:
+      - .env
+    networks:
+      - backend
+    restart: on-failure
+  mysql:
+    image: mariadb
+#    build: ./mariadb
+    ports:
+      - '3306'
+    volumes:
+      - /var/lib/mysql
+    env_file:
+      - .env
+    networks:
+      - backend
+    restart: on-failure
+  wordpress:
+    image: wordpress:fpm
+#    build: ./wordpress
+    ports:
+      - '9000'
+    volumes:
+      - ./wordpress/conf/wordpress:/var/www/html
+    env_file:
+      - .env
+    networks:
+      - backend
+    restart: on-failure
+networks:
+  backend:
+    driver: bridge
