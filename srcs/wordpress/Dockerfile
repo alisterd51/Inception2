@@ -6,7 +6,7 @@
 #    By: anclarma <anclarma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/26 15:14:22 by anclarma          #+#    #+#              #
-#    Updated: 2021/05/30 22:07:08 by anclarma         ###   ########.fr        #
+#    Updated: 2021/06/01 00:29:41 by anclarma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ RUN			apk add --no-cache php php-fpm php-opcache php-mysqli
 # Copy confile files
 COPY		entrypoint-wordpress.sh /entrypoint-wordpress.sh
 RUN			chmod +x /entrypoint-wordpress.sh
-COPY		wordpress.conf /etc/php7/php-fpm.d/wordpress.conf
+COPY		www.conf /etc/php7/php-fpm.d/www.conf
 
 WORKDIR		/var/www/html
 
