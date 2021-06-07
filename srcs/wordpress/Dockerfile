@@ -10,19 +10,20 @@
 #                                                                              #
 # **************************************************************************** #
 
-FROM		alpine:3.12
+FROM		debian:buster
 LABEL		maintainer="anclarma"
 
 # Update
-RUN			apk update && apk upgrade
+RUN			apt update && apt -y upgrade
 
 # Install php
-RUN			apk add --no-cache php php-fpm php-opcache php-mysqli
+RUN			apt -y install php7.3 php7.3-fpm php-mysqli
 
 # Copy confile files
+RUN			mkdir -p /run/php
 COPY		entrypoint-wordpress.sh /entrypoint-wordpress.sh
 RUN			chmod +x /entrypoint-wordpress.sh
-COPY		www.conf /etc/php7/php-fpm.d/www.conf
+COPY		www.conf /etc/php/7.3/fpm/pool.d/www.conf
 
 WORKDIR		/var/www/html
 

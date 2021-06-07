@@ -3,7 +3,6 @@ services:
   nginx:
     build: ./nginx
     ports:
-      - '80:80'
       - '443:443'
     volumes:
       - ./wordpress/conf/wordpress:/var/www/html

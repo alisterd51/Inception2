@@ -1,3 +1,2 @@
 #!/bin/sh
-cd /var/www/wordpress
-php-fpm7 --nodaemonize -O
+php-fpm7.3 -F
