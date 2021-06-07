@@ -24,7 +24,6 @@ services:
       - backend
     restart: on-failure
   wordpress:
-#    image: wordpress:fpm-alpine
     build: ./wordpress
     ports:
       - '9000'
