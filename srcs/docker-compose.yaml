@@ -12,8 +12,7 @@ services:
       - backend
     restart: on-failure
   mysql:
-    image: mariadb
-#    build: ./mariadb
+    build: ./mariadb
     ports:
       - '3306'
     volumes:

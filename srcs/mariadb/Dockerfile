@@ -6,7 +6,7 @@
 #    By: anclarma <anclarma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/26 15:14:22 by anclarma          #+#    #+#              #
-#    Updated: 2021/06/09 18:52:08 by anclarma         ###   ########.fr        #
+#    Updated: 2021/06/09 21:17:25 by anclarma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,10 @@ RUN			apt -y install mariadb-server 2> /dev/null
 # Copy confile files
 COPY		entrypoint-mariadb.sh /entrypoint-mariadb.sh
 RUN			chmod +x /entrypoint-mariadb.sh
+COPY		my.cnf /etc/mysql/my.cnf
 
 # Start server
 ENTRYPOINT	["/entrypoint-mariadb.sh"]
 
 # Ports
-EXPOSE		9000
+EXPOSE		3306
