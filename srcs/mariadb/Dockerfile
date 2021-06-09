@@ -6,7 +6,7 @@
 #    By: anclarma <anclarma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/26 15:14:22 by anclarma          #+#    #+#              #
-#    Updated: 2021/06/09 14:59:35 by anclarma         ###   ########.fr        #
+#    Updated: 2021/06/09 18:52:08 by anclarma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,19 +16,15 @@ LABEL		maintainer="anclarma"
 # Update
 RUN			apt update 2> /dev/null && apt -y upgrade 2> /dev/null
 
-# Install php
-RUN			apt -y install php7.3 php7.3-fpm php-mysqli 2> /dev/null
+# Install mariadb
+RUN			apt -y install mariadb-server 2> /dev/null
 
 # Copy confile files
-RUN			mkdir -p /run/php
-COPY		entrypoint-wordpress.sh /entrypoint-wordpress.sh
-RUN			chmod +x /entrypoint-wordpress.sh
-COPY		www.conf /etc/php/7.3/fpm/pool.d/www.conf
-
-WORKDIR		/var/www/html
+COPY		entrypoint-mariadb.sh /entrypoint-mariadb.sh
+RUN			chmod +x /entrypoint-mariadb.sh
 
 # Start server
-ENTRYPOINT	["/entrypoint-wordpress.sh"]
+ENTRYPOINT	["/entrypoint-mariadb.sh"]
 
 # Ports
 EXPOSE		9000
