@@ -5,7 +5,7 @@ services:
     ports:
       - '443:443'
     volumes:
-      - ./wordpress/conf/wordpress:/var/www/html
+      - /home/anclarma/data/wp:/var/www/html
     env_file:
       - .env
     networks:
@@ -16,6 +16,7 @@ services:
     ports:
       - '3306'
     volumes:
+#      - /home/anclarma/data/db:/var/lib/mysql
       - /var/lib/mysql
     env_file:
       - .env
@@ -27,7 +28,7 @@ services:
     ports:
       - '9000'
     volumes:
-      - ./wordpress/conf/wordpress:/var/www/html
+      - /home/anclarma/data/wp:/var/www/html
     env_file:
       - .env
     networks:

@@ -10,10 +10,19 @@
 #                                                                              #
 # **************************************************************************** #
 
-up:
-	docker-compose -f srcs/docker-compose.yaml up --build -d
+up:	test
+	docker-compose -f srcs/docker-compose.yml up --build -d
 
 down:
-	docker-compose -f srcs/docker-compose.yaml down
+	docker-compose -f srcs/docker-compose.yml down
+
+test:
+	sudo rm -rf /home/anclarma/data/db /home/anclarma/data/wp
+	sudo mkdir -p /home/anclarma/data/db
+	sudo mkdir -p /home/anclarma/data/wp
+	wget https://fr.wordpress.org/wordpress-5.7.2-fr_FR.tar.gz
+	tar -xf wordpress-5.7.2-fr_FR.tar.gz
+	sudo mv wordpress/* /home/anclarma/data/wp/.
+	rm -rf wordpress-5.7.2-fr_FR.tar.gz wordpress
 
 .PHONY:	up down
