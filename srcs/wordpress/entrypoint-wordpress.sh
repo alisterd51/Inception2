@@ -10,4 +10,4 @@ sed -i 's/wp_/'$WORDPRESS_TABLE_PREFIX'/' /var/www/html/wp-config.php
 chown -R www-data:www-data /var/www/html
 #
 
-php-fpm7.3 -F
+exec php-fpm7.3 -F

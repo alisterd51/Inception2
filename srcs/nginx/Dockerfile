@@ -6,7 +6,7 @@
 #    By: anclarma <anclarma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/26 15:14:22 by anclarma          #+#    #+#              #
-#    Updated: 2021/05/26 22:40:51 by anclarma         ###   ########.fr        #
+#    Updated: 2021/06/10 11:40:44 by anclarma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,11 +25,9 @@ COPY		nginx.conf /etc/nginx/http.d/default.conf
 RUN			ln -fs /etc/nginx/http.d/default.conf /etc/nginx/conf.d/default.conf
 COPY		cert_file /etc/ssl/certs/ssl.crt
 COPY		key_file /etc/ssl/certs/ssl.key
-COPY		entrypoint-nginx.sh /entrypoint-nginx.sh
-RUN			chmod +x /entrypoint-nginx.sh
 
 # Start server
-ENTRYPOINT	["/entrypoint-nginx.sh"]
+CMD			["nginx", "-g", "daemon off;"]
 
 # Ports
 EXPOSE		443

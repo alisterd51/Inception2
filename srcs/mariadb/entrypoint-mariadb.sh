@@ -7,4 +7,4 @@ mysql -e "CREATE DATABASE IF NOT EXISTS ${MYSQL_DATABASE};"
 mysql -e "GRANT ALL PRIVILEGES ON *.* TO '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_PASSWORD}';"
 mysql -e "FLUSH PRIVILEGES;"
 service mysql stop
-mysqld -u root
+exec mysqld -u root
