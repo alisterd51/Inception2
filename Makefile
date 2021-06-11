@@ -6,7 +6,7 @@
 #    By: anclarma <anclarma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/26 15:06:10 by anclarma          #+#    #+#              #
-#    Updated: 2021/05/27 16:08:34 by anclarma         ###   ########.fr        #
+#    Updated: 2021/06/11 21:07:58 by anclarma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,6 @@ down:
 	docker-compose -f srcs/docker-compose.yml down
 
 env_prep:
-	sudo usermod -aG docker user42 && newgrp docker
 	sudo sed -i "1i\127.0.0.1\tanclarma.42.fr" /etc/hosts
 	sudo mkdir -p /home/anclarma/data/db
 	sudo mkdir -p /home/anclarma/data/wp

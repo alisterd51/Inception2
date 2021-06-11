@@ -1,3 +1,6 @@
 memo mysql:
 mysqldump -u root -p$MYSQL_ROOT_PASSWORD $MYSQL_DATABASE > /base.sql
 mysql -u root -p$MYSQL_ROOT_PASSWORD $MYSQL_DATABASE < /base.sql
+
+si docker non config:
+sudo usermod -aG docker user42 && newgrp docker
