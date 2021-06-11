@@ -6,7 +6,7 @@
 #    By: anclarma <anclarma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/26 15:06:10 by anclarma          #+#    #+#              #
-#    Updated: 2021/06/11 23:36:27 by anclarma         ###   ########.fr        #
+#    Updated: 2021/06/11 23:58:03 by anclarma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,4 +19,4 @@ down:
 env_prep:
 	sudo sed -i "1i\127.0.0.1\tanclarma.42.fr" /etc/hosts
 
-.PHONY:	up down clean
+.PHONY:	up down
