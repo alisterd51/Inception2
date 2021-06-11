@@ -6,7 +6,7 @@
 #    By: anclarma <anclarma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/26 15:14:22 by anclarma          #+#    #+#              #
-#    Updated: 2021/06/09 14:59:35 by anclarma         ###   ########.fr        #
+#    Updated: 2021/06/11 23:33:42 by anclarma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,10 @@ RUN			apt update 2> /dev/null && apt -y upgrade 2> /dev/null
 
 # Install php
 RUN			apt -y install php7.3 php7.3-fpm php-mysqli 2> /dev/null
+
+# Install wordpress
+ADD			https://fr.wordpress.org/wordpress-5.7.2-fr_FR.tar.gz /wp.tar.gz
+RUN			tar -xf /wp.tar.gz && rm -f /wp.tar.gz
 
 # Copy confile files
 RUN			mkdir -p /run/php
