@@ -25,4 +25,7 @@ test:
 	sudo mv wordpress/* /home/anclarma/data/wp/.
 	rm -rf wordpress-5.7.2-fr_FR.tar.gz wordpress
 
+clean:	down
+	sudo rm -rf /home/anclarma/data/db /home/anclarma/data/wp
+
 .PHONY:	up down

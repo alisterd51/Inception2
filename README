@@ -1,1 +1,2 @@
-mysqldump -u root -p $MYSQL_DATABASE > dbname.sql
+mysqldump -u root -p$MYSQL_ROOT_PASSWORD $MYSQL_DATABASE > /base.sql
+mysql -u root -p$MYSQL_ROOT_PASSWORD $MYSQL_DATABASE < /base.sql

@@ -5,7 +5,7 @@ services:
     ports:
       - '443:443'
     volumes:
-      - /home/anclarma/data/wp:/var/www/html
+      - wp:/var/www/html
     env_file:
       - .env
     networks:
@@ -16,8 +16,7 @@ services:
     ports:
       - '3306'
     volumes:
-#      - /home/anclarma/data/db:/var/lib/mysql
-      - /var/lib/mysql
+      - db:/var/lib/mysql
     env_file:
       - .env
     networks:
@@ -28,12 +27,27 @@ services:
     ports:
       - '9000'
     volumes:
-      - /home/anclarma/data/wp:/var/www/html
+      - wp:/var/www/html
     env_file:
       - .env
     networks:
       - backend
     restart: on-failure
+
 networks:
   backend:
     driver: bridge
+
+volumes:
+  db:
+    driver: local
+    driver_opts:
+      type: "none"
+      o: "bind"
+      device: "/home/anclarma/data/db"
+  wp:
+    driver: local
+    driver_opts:
+      type: "none"
+      o: "bind"
+      device: "/home/anclarma/data/wp"
