@@ -1,6 +1,6 @@
 #!/bin/sh
 
-mv wordpress/* /var/www/html/.
+mv /wordpress/* /var/www/html/.
 
 #test
 cp /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
