@@ -17,6 +17,7 @@ down:
 	docker-compose -f srcs/docker-compose.yml down
 
 env_prep:
+	sudo usermod -aG docker user42 && newgrp docker
 	sudo sed -i "1i\127.0.0.1\tanclarma.42.fr" /etc/hosts
 	sudo mkdir -p /home/anclarma/data/db
 	sudo mkdir -p /home/anclarma/data/wp
@@ -28,4 +29,4 @@ env_prep:
 clean:	down
 	sudo rm -rf /home/anclarma/data/db /home/anclarma/data/wp
 
-.PHONY:	up down
+.PHONY:	up down clean
