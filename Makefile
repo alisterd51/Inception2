@@ -10,14 +10,14 @@
 #                                                                              #
 # **************************************************************************** #
 
-up:	test
+up:	env_prep
 	docker-compose -f srcs/docker-compose.yml up --build -d
 
 down:
 	docker-compose -f srcs/docker-compose.yml down
 
-test:
-	sudo rm -rf /home/anclarma/data/db /home/anclarma/data/wp
+env_prep:
+	sudo sed -i "1i\127.0.0.1\tanclarma.42.fr" /etc/hosts
 	sudo mkdir -p /home/anclarma/data/db
 	sudo mkdir -p /home/anclarma/data/wp
 	wget https://fr.wordpress.org/wordpress-5.7.2-fr_FR.tar.gz
