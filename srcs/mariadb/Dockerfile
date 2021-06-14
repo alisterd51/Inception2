@@ -21,8 +21,10 @@ RUN			apt -y install mariadb-server 2> /dev/null
 
 # Copy confile files
 COPY		entrypoint-mariadb.sh /entrypoint-mariadb.sh
+COPY		install_db.sh /install_db.sh
 COPY		base.sql /base.sql
 RUN			chmod +x /entrypoint-mariadb.sh
+RUN			chmod +x /install_db.sh
 COPY		my.cnf /etc/mysql/my.cnf
 
 # Start server
